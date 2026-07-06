@@ -3,856 +3,724 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Garaje Tech — Gadgets & Periféricos Premium</title>
-<meta name="description" content="Teclados Epomaker, almacenamiento Orico, carga Ugreen y los mejores gadgets. Tecnología premium con envío express.">
+<title>Garaje Tech — Periféricos de vanguardia</title>
+<meta name="description" content="Teclados Epomaker, almacenamiento Orico, carga Ugreen. Rendimiento sin esfuerzo para tu setup.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0c15;
-    --card:#151726;
-    --ink:#eef0fa;
-    --muted:#9aa2bf;
-    --line:#242741;
-    --brand1:#8b7bff;
-    --brand2:#b44bff;
-    --pink:#ff4b9b;
-    --grad:linear-gradient(135deg,#6c5bff,#b44bff 60%,#ff4b9b);
-    --grad-soft:linear-gradient(135deg,rgba(108,91,255,.18),rgba(255,75,155,.14));
-    --shadow:0 10px 34px rgba(0,0,0,.35);
-    --shadow-lg:0 24px 60px rgba(0,0,0,.5);
-    --header-bg:rgba(11,12,21,.78);
-    --header-line:rgba(36,39,65,.9);
-    --hover-bg:#1c1f33;
-    --input-bg:#1a1c2e;
-    --placeholder:#69708c;
-    --glass:rgba(15,17,30,.88);
-    --logo-mute:#3f4463;
-    --flagtop-bg:#ffffff;
-    --flagtop-ink:#101223;
-    --toast-bg:#ffffff;
-    --toast-ink:#101223;
-    --blob1:#332a96;
-    --blob2:#711f50;
-    --blob3:#154a70;
-    --blob-op:.5;
-    --display:'Sora',sans-serif;
-    --body:'Inter',sans-serif;
-    --r:22px;
-  }
-  html[data-theme="light"]{
-    --bg:#f5f6fb;
-    --card:#ffffff;
-    --ink:#101223;
-    --muted:#697086;
-    --line:#e9ebf4;
-    --brand1:#6c5bff;
-    --grad-soft:linear-gradient(135deg,#eef0ff,#f8efff);
-    --shadow:0 10px 34px rgba(23,25,60,.08);
-    --shadow-lg:0 24px 60px rgba(23,25,60,.14);
-    --header-bg:rgba(255,255,255,.75);
-    --header-line:rgba(233,235,244,.9);
-    --hover-bg:#f0f1f8;
-    --input-bg:#f0f1f8;
-    --placeholder:#9aa0b5;
-    --glass:rgba(255,255,255,.92);
-    --logo-mute:#c3c8d9;
-    --flagtop-bg:#101223;
-    --flagtop-ink:#ffffff;
-    --toast-bg:#101223;
-    --toast-ink:#ffffff;
-    --blob1:#dcd6ff;
-    --blob2:#ffdcec;
-    --blob3:#d8f4ff;
-    --blob-op:.5;
+    --bg:#080d0f;
+    --tile:#101a1d;
+    --tile-2:#0c1417;
+    --mint:#c9e2da;
+    --mint-dim:#8fb0a7;
+    --text:#e8f0ed;
+    --muted:#7d8f96;
+    --line:rgba(255,255,255,.09);
+    --glass:rgba(255,255,255,.07);
+    --red:#ff4a2d;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --r:26px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;overflow-x:hidden;transition:background .3s ease,color .3s ease}
-  ::selection{background:var(--brand1);color:#fff}
+  body{
+    background:var(--bg);color:var(--text);font-family:var(--font);
+    font-size:16px;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--mint);color:#0a1210}
   img{display:block}
+  a{text-decoration:none;color:inherit}
 
-  /* blobs de color de fondo */
-  .blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:var(--blob-op);z-index:-1;pointer-events:none;transition:background .3s ease}
-  .blob-1{width:520px;height:520px;background:var(--blob1);top:-180px;right:-140px}
-  .blob-2{width:420px;height:420px;background:var(--blob2);bottom:-160px;left:-140px}
-  .blob-3{width:360px;height:360px;background:var(--blob3);top:45%;left:60%;opacity:calc(var(--blob-op) - .1)}
+  .page{max-width:1400px;margin:0 auto;padding:14px;display:flex;flex-direction:column;gap:14px}
+  .tile{background:var(--tile);border-radius:var(--r);overflow:hidden;position:relative}
 
-  /* ===== HEADER ===== */
-  header{
-    position:sticky;top:0;z-index:100;
-    background:var(--header-bg);backdrop-filter:blur(16px);
-    border-bottom:1px solid var(--header-line);
-    display:flex;align-items:center;gap:26px;padding:14px 5%;
+  /* ============ CHIP / NODOS / BOTONES ============ */
+  .chip-tag{
+    display:inline-flex;align-items:center;gap:9px;
+    border:1px solid var(--line);background:rgba(255,255,255,.04);
+    border-radius:30px;padding:8px 16px;font-size:12.5px;color:var(--mint-dim);
+    letter-spacing:.3px;backdrop-filter:blur(8px);
   }
-  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
-  .logo .mark{
-    width:40px;height:40px;border-radius:13px;background:var(--grad);
-    display:grid;place-items:center;color:#fff;font-size:1.15rem;
-    box-shadow:0 8px 20px rgba(108,91,255,.35);
+  .chip-tag i{
+    font-style:normal;width:15px;height:15px;border:1px solid var(--mint-dim);
+    border-radius:50%;display:grid;place-items:center;font-size:8px;
   }
-  .logo b{font-family:var(--display);font-weight:800;font-size:1.18rem;letter-spacing:-.3px}
-  .logo b span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  nav{display:flex;gap:4px}
-  nav a{
-    color:var(--muted);text-decoration:none;font-weight:600;font-size:.9rem;
-    padding:9px 15px;border-radius:12px;transition:.2s;
+  .node{
+    width:34px;height:34px;border-radius:50%;position:relative;
+    display:grid;place-items:center;
   }
-  nav a:hover{color:var(--ink);background:var(--hover-bg)}
-  .search{
-    flex:1;max-width:330px;margin-left:auto;display:flex;align-items:center;gap:9px;
-    background:var(--input-bg);border:1px solid transparent;border-radius:14px;padding:10px 16px;transition:.2s;
+  .node::before{
+    content:'';position:absolute;inset:0;border-radius:50%;
+    background:rgba(163,222,208,.12);animation:pulse 2.6s infinite;
   }
-  .search:focus-within{background:var(--card);border-color:var(--brand1);box-shadow:0 0 0 4px rgba(108,91,255,.15)}
-  .search input{flex:1;background:transparent;border:none;outline:none;color:var(--ink);font-family:var(--body);font-size:.9rem}
-  .search input::placeholder{color:var(--placeholder)}
-  .cart-btn{
-    background:var(--grad);color:#fff;border:none;font-family:var(--body);font-weight:700;
-    font-size:.9rem;padding:11px 20px;border-radius:14px;cursor:pointer;
-    display:flex;align-items:center;gap:9px;transition:.25s;white-space:nowrap;
-    box-shadow:0 10px 24px rgba(108,91,255,.35);
+  .node::after{
+    content:'';width:8px;height:8px;border-radius:50%;background:#dff5ee;
+    box-shadow:0 0 12px #9fe8d8, 0 0 26px rgba(120,220,200,.6);
   }
-  .cart-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(108,91,255,.45)}
-  .cart-count{
-    background:#fff;color:var(--brand1);min-width:21px;height:21px;border-radius:50%;
-    display:grid;place-items:center;font-size:.72rem;font-weight:800;padding:0 5px;
+  @keyframes pulse{
+    0%{transform:scale(.6);opacity:.9}
+    70%{transform:scale(1.25);opacity:0}
+    100%{transform:scale(.6);opacity:0}
   }
-  .cart-count.bump{animation:bump .35s ease}
-  @keyframes bump{40%{transform:scale(1.55)}}
-  .theme-btn{
-    background:var(--card);border:1px solid var(--line);width:42px;height:42px;border-radius:14px;
-    cursor:pointer;font-size:1.05rem;display:grid;place-items:center;transition:.2s;box-shadow:var(--shadow);
+  .btn-pill{
+    display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+    border:1px solid rgba(255,255,255,.22);border-radius:30px;
+    background:rgba(255,255,255,.05);backdrop-filter:blur(8px);
+    color:var(--text);font-family:var(--font);font-size:13.5px;font-weight:400;
+    padding:12px 8px 12px 22px;transition:.3s;letter-spacing:.3px;
   }
-  .theme-btn:hover{transform:translateY(-2px);border-color:var(--brand1)}
+  .btn-pill .arr{
+    width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+    display:grid;place-items:center;font-size:13px;transition:.3s;
+  }
+  .btn-pill:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4)}
+  .btn-pill:hover .arr{background:var(--mint);color:#0a1210;border-color:var(--mint)}
 
-  /* ===== HERO ===== */
+  /* ============ HERO ============ */
   .hero{
-    max-width:1260px;margin:0 auto;padding:72px 5% 90px;
-    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+    min-height:92vh;display:flex;flex-direction:column;
+    background:
+      linear-gradient(180deg, rgba(8,13,15,.55) 0%, rgba(10,16,18,.82) 62%, #0c1417 100%),
+      url('https://images.unsplash.com/photo-1625723044792-44de16ccb4e9?auto=format&fit=crop&w=1600&q=70') center/cover no-repeat;
   }
-  .pill{
-    display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);
-    border-radius:30px;padding:8px 18px;font-size:.82rem;font-weight:600;color:var(--muted);
-    box-shadow:var(--shadow);margin-bottom:26px;
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:26px 38px;
   }
-  .pill b{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero h1{
-    font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,5.4vw,4rem);
-    line-height:1.08;letter-spacing:-1.5px;
+  .logo{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;letter-spacing:.2px}
+  .logo i{
+    font-style:normal;width:28px;height:28px;border-radius:50%;
+    background:rgba(255,255,255,.1);border:1px solid var(--line);
+    display:grid;place-items:center;font-size:13px;
   }
-  .hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero p{color:var(--muted);font-size:1.1rem;line-height:1.75;margin:22px 0 32px;max-width:490px}
-  .hero p b{color:var(--ink)}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .btn{
-    font-family:var(--body);font-weight:700;font-size:.95rem;padding:15px 30px;
-    border-radius:16px;cursor:pointer;text-decoration:none;display:inline-block;transition:.25s;
+  .nav-links{display:flex;gap:8px}
+  .nav-links a{
+    font-size:12.5px;color:rgba(232,240,237,.75);padding:8px 14px;border-radius:20px;transition:.25s;
   }
-  .btn-grad{background:var(--grad);color:#fff;border:none;box-shadow:0 14px 30px rgba(108,91,255,.35)}
-  .btn-grad:hover{transform:translateY(-3px);box-shadow:0 20px 40px rgba(108,91,255,.45)}
-  .btn-white{background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow)}
-  .btn-white:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-  .social-proof{display:flex;align-items:center;gap:14px;margin-top:34px}
-  .avatars{display:flex}
-  .avatars span{
-    width:38px;height:38px;border-radius:50%;border:3px solid var(--bg);margin-left:-10px;
-    display:grid;place-items:center;color:#fff;font-size:.72rem;font-weight:700;
+  .nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .bag{
+    position:relative;background:none;border:none;color:var(--text);
+    font-size:15px;cursor:pointer;padding:4px;
   }
-  .avatars span:first-child{margin-left:0}
-  .social-proof small{color:var(--muted);font-size:.85rem;line-height:1.5}
-  .social-proof small b{color:var(--ink)}
+  .bag-count{
+    position:absolute;top:-6px;right:-9px;background:var(--red);color:#fff;
+    font-size:9px;font-weight:600;min-width:16px;height:16px;border-radius:9px;
+    display:grid;place-items:center;padding:0 4px;box-shadow:0 0 10px rgba(255,74,45,.6);
+  }
+  .bag-count.bump{animation:bump .35s ease}
+  @keyframes bump{40%{transform:scale(1.6)}}
+  .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+  .burger span{width:26px;height:1.5px;background:rgba(255,255,255,.8)}
 
-  /* collage hero */
-  .collage{position:relative;height:520px}
-  .ph{
-    position:absolute;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:10px;
-    box-shadow:var(--shadow-lg);transition:transform .35s ease;
+  .hero-main{
+    flex:1;display:grid;grid-template-columns:1fr 1.15fr .8fr;gap:26px;
+    align-items:center;padding:20px 44px;
   }
-  .ph img{width:100%;height:100%;object-fit:cover;border-radius:13px}
-  .ph figcaption{
-    position:absolute;left:18px;bottom:16px;background:var(--glass);backdrop-filter:blur(6px);
-    border-radius:12px;padding:8px 14px;font-size:.78rem;font-weight:700;box-shadow:var(--shadow);color:var(--ink);
+  .hero-copy .chip-tag{margin-bottom:26px}
+  .hero-copy h1{
+    font-size:clamp(42px,5.4vw,68px);font-weight:300;line-height:1.04;
+    letter-spacing:-1.5px;color:var(--mint);
   }
-  .ph figcaption em{font-style:normal;color:var(--brand1);display:block;font-size:.72rem}
-  .ph-1{width:62%;height:320px;top:0;right:0;transform:rotate(2.5deg);animation:float 7s ease-in-out infinite}
-  .ph-2{width:48%;height:250px;bottom:0;left:0;transform:rotate(-3deg);animation:float 7s ease-in-out -2.5s infinite;z-index:2}
-  .ph-3{width:34%;height:180px;top:210px;right:52%;transform:rotate(-1deg);animation:float 7s ease-in-out -5s infinite}
-  .ph:hover{transform:rotate(0) scale(1.04);z-index:5}
-  @keyframes float{0%,100%{margin-top:0}50%{margin-top:-14px}}
-  .chip-float{
-    position:absolute;z-index:6;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 16px;
-    font-size:.8rem;font-weight:700;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:8px;color:var(--ink);
-    animation:float 6s ease-in-out infinite;
-  }
-  .cf-1{top:-14px;left:6%;animation-delay:-1s}
-  .cf-2{bottom:34px;right:-8px;animation-delay:-3.5s;background:var(--grad);color:#fff}
+  .hero-copy h1 b{font-weight:300;color:#eef7f3}
+  .hero-copy .btn-pill{margin-top:40px}
 
-  /* ===== LOGOS ===== */
-  .logos{max-width:1260px;margin:0 auto;padding:0 5% 70px;text-align:center}
-  .logos small{color:#9aa0b5;font-size:.78rem;font-weight:600;letter-spacing:3px;text-transform:uppercase}
-  .logos-row{
-    display:flex;justify-content:center;gap:52px;flex-wrap:wrap;margin-top:22px;
-    font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--logo-mute);letter-spacing:1px;
+  .hero-product{position:relative;display:grid;place-items:center}
+  .hero-product .frame{
+    width:min(100%,440px);border-radius:28px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 40px 90px rgba(0,0,0,.6), 0 0 90px rgba(255,74,45,.22);
   }
-  .logos-row span{transition:.25s;cursor:default}
-  .logos-row span:hover{color:var(--brand1);transform:translateY(-3px)}
-
-  /* ===== SECCIONES ===== */
-  section{padding:76px 5%}
-  .wrap{max-width:1260px;margin:0 auto}
-  .sec-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:42px;flex-wrap:wrap}
-  .kicker{
-    display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;
-    letter-spacing:2.5px;text-transform:uppercase;
-    background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
-  .sec-head h2{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.6vw,2.5rem);letter-spacing:-1px;margin-top:8px}
-  .sec-head p{color:var(--muted);max-width:360px;font-size:.95rem;line-height:1.65}
-
-  /* ===== FILTROS ===== */
-  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
-  .chip{
-    background:var(--card);border:1px solid var(--line);color:var(--muted);
-    font-family:var(--body);font-weight:600;font-size:.86rem;padding:10px 20px;
-    border-radius:30px;cursor:pointer;transition:.22s;box-shadow:0 3px 10px rgba(23,25,60,.04);
-  }
-  .chip:hover{color:var(--brand1);border-color:var(--brand1);transform:translateY(-2px)}
-  .chip.active{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 22px rgba(108,91,255,.35)}
-
-  /* ===== GRID ===== */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:26px}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:var(--r);
-    overflow:hidden;transition:transform .3s ease, box-shadow .3s ease;position:relative;
-    box-shadow:var(--shadow);
-  }
-  .card:hover{transform:translateY(-9px);box-shadow:var(--shadow-lg)}
-  .card.hidden-card{display:none}
-  .card-img{height:205px;overflow:hidden;position:relative;background:var(--input-bg)}
-  .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-  .card:hover .card-img img{transform:scale(1.08)}
-  .brand-tag{
-    position:absolute;top:14px;left:14px;z-index:2;background:var(--glass);
-    backdrop-filter:blur(6px);color:var(--brand1);font-weight:700;font-size:.7rem;
-    letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:20px;
-    box-shadow:0 4px 14px rgba(23,25,60,.12);
-  }
-  .flag{
-    position:absolute;top:14px;right:14px;z-index:2;font-size:.7rem;font-weight:700;
-    padding:6px 12px;border-radius:20px;color:#fff;
-  }
-  .flag.sale{background:var(--pink)}
-  .flag.new{background:#12b76a}
-  .flag.top{background:var(--flagtop-bg);color:var(--flagtop-ink)}
-  .card-body{padding:20px 22px 22px}
-  .card-title{font-family:var(--display);font-weight:700;font-size:1rem;line-height:1.4;letter-spacing:-.2px;min-height:44px}
-  .card-specs{color:var(--muted);font-size:.85rem;line-height:1.55;margin:8px 0 6px;min-height:40px}
-  .stars{color:#ffb01f;font-size:.8rem;letter-spacing:2px}
-  .stars small{color:var(--muted);letter-spacing:0;font-weight:600}
-  .card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:10px}
-  .price .old{color:#9aa0b5;text-decoration:line-through;font-size:.8rem;display:block;font-weight:500}
-  .price .now{font-family:var(--display);font-weight:800;font-size:1.22rem;letter-spacing:-.5px}
-  .add-btn{
-    background:var(--grad);border:none;color:#fff;font-weight:700;font-size:.84rem;
-    padding:11px 18px;border-radius:14px;cursor:pointer;transition:.22s;white-space:nowrap;
-    box-shadow:0 8px 18px rgba(108,91,255,.3);
-  }
-  .add-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 12px 26px rgba(108,91,255,.42)}
-  .add-btn:active{transform:scale(.95)}
-  .no-results{
-    display:none;text-align:center;color:var(--muted);padding:54px 20px;background:var(--card);
-    border:1px dashed var(--line);border-radius:var(--r);font-size:1rem;
+  .hero-product .frame img{width:100%;height:360px;object-fit:cover}
+  .hero-product .node{position:absolute;right:-4px;top:50%;transform:translateY(-50%)}
+  .hero-product .glow{
+    position:absolute;width:70%;height:40%;border-radius:50%;
+    background:radial-gradient(ellipse, rgba(255,74,45,.32), transparent 70%);
+    filter:blur(30px);z-index:-1;
   }
 
-  /* ===== BANNER PROMO ===== */
-  .promo{
-    position:relative;border-radius:30px;overflow:hidden;background:var(--grad);
-    padding:60px 6%;color:#fff;display:flex;align-items:center;justify-content:space-between;
-    gap:40px;flex-wrap:wrap;box-shadow:0 30px 70px rgba(108,91,255,.35);
+  .hero-side{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+  .glass-card{
+    background:rgba(20,30,33,.55);backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.12);border-radius:20px;
+    padding:14px;width:min(100%,230px);
   }
-  .promo::before{
-    content:'';position:absolute;width:420px;height:420px;border-radius:50%;
-    background:rgba(255,255,255,.14);top:-200px;right:-100px;
+  .glass-card .gc-img{border-radius:12px;overflow:hidden;position:relative}
+  .glass-card .gc-img img{width:100%;height:130px;object-fit:cover}
+  .glass-card .play{
+    position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:50%;
+    background:rgba(10,16,18,.8);border:1px solid rgba(255,255,255,.25);
+    display:grid;place-items:center;font-size:10px;color:#fff;
   }
-  .promo::after{
-    content:'';position:absolute;width:280px;height:280px;border-radius:50%;
-    background:rgba(255,255,255,.1);bottom:-140px;left:32%;
+  .glass-card p{font-size:13.5px;color:var(--text);margin-top:12px;line-height:1.45;font-weight:400}
+  .spec-chip{
+    display:inline-flex;align-items:center;gap:8px;font-size:12px;color:rgba(232,240,237,.85);
+    border-bottom:1px solid var(--line);padding:0 4px 8px;letter-spacing:.4px;
   }
-  .promo h3{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4.2vw,3rem);letter-spacing:-1px;line-height:1.1;position:relative;z-index:2}
-  .promo p{opacity:.92;margin-top:12px;max-width:460px;line-height:1.7;position:relative;z-index:2}
+  .spec-chip i{font-style:normal;color:var(--mint-dim);font-size:13px}
+
+  .hero-band{
+    display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:30px;align-items:center;
+    padding:26px 44px 34px;border-top:1px solid var(--line);position:relative;
+  }
+  .hero-band::before{
+    content:'';position:absolute;top:-17px;left:50%;transform:translateX(-50%);
+    width:34px;height:34px;border-radius:50%;background:var(--tile-2);
+    border:1px solid var(--line);
+  }
+  .hero-band .band-node{position:absolute;top:-17px;left:50%;transform:translateX(-50%)}
+  .band-product{display:flex;align-items:center;gap:18px}
+  .band-product .bp-img{
+    width:120px;height:86px;border-radius:14px;overflow:hidden;position:relative;
+    border:1px solid var(--line);
+  }
+  .band-product .bp-img img{width:100%;height:100%;object-fit:cover}
+  .ring360{font-size:10.5px;color:var(--muted);letter-spacing:2px;display:flex;align-items:center;gap:7px}
+  .ring360 b{color:var(--mint-dim);font-weight:400}
+  .band-center{text-align:center}
+  .band-center h3{font-size:clamp(20px,2.3vw,27px);font-weight:300;letter-spacing:-.3px;line-height:1.3}
+  .band-center a{
+    display:inline-block;margin-top:14px;font-size:11px;letter-spacing:2.5px;
+    color:var(--text);border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px;
+    transition:.25s;text-transform:uppercase;
+  }
+  .band-center a:hover{color:var(--mint);border-color:var(--mint)}
+  .band-note{display:flex;align-items:center;gap:14px;justify-content:flex-end;text-align:left}
+  .avatar{
+    width:44px;height:44px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,#274b43,#12211e);border:1.5px solid rgba(163,222,208,.5);
+    display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--mint);
+  }
+  .band-note p{font-size:11.5px;color:var(--muted);line-height:1.6;max-width:230px}
+  .band-note p b{color:var(--text);font-weight:600}
+
+  /* ============ BENTO ============ */
+  .bento{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+  .bento .tile{padding:38px;min-height:480px;display:flex;flex-direction:column}
+  .bento-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:30px}
+  .bento h2{
+    font-size:clamp(28px,3.2vw,40px);font-weight:300;letter-spacing:-.8px;line-height:1.12;
+  }
+  .bento-product{
+    margin:auto;display:flex;flex-direction:column;align-items:center;gap:22px;padding-top:26px;
+  }
+  .bento-product .bpr{
+    width:min(100%,380px);border-radius:22px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 30px 70px rgba(0,0,0,.55), 0 0 70px rgba(255,74,45,.16);
+  }
+  .bento-product .bpr img{width:100%;height:260px;object-fit:cover}
+  .tile-mist{
+    background:
+      radial-gradient(ellipse 90% 60% at 70% 20%, rgba(120,190,175,.25), transparent 65%),
+      radial-gradient(ellipse 70% 60% at 20% 90%, rgba(70,130,150,.28), transparent 70%),
+      linear-gradient(160deg,#16272b,#0d181c 70%);
+    align-items:center;text-align:center;justify-content:center;gap:24px;
+  }
+  .tile-mist h2{color:var(--mint);max-width:420px}
+  .tile-mist p{color:var(--mint-dim);font-size:14px;line-height:1.75;max-width:360px}
+  .tile-mist .node{margin-bottom:6px}
+
+  /* ============ STRIP SOPORTE ============ */
+  .strip{
+    display:flex;align-items:center;justify-content:space-between;gap:26px;
+    padding:34px 38px;flex-wrap:wrap;
+    background:linear-gradient(120deg,#101a1d, #0e1a1e 60%, #12232a);
+  }
+  .strip h3{font-size:clamp(24px,3vw,34px);font-weight:300;letter-spacing:-.6px}
+  .strip h3 span{color:var(--mint-dim)}
+  .strip-left{display:flex;flex-direction:column;gap:16px}
   .coupon{
-    position:relative;z-index:2;background:rgba(255,255,255,.16);border:1.5px dashed rgba(255,255,255,.75);
-    border-radius:20px;padding:24px 34px;text-align:center;cursor:pointer;transition:.22s;backdrop-filter:blur(6px);
+    display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+    border:1px dashed rgba(163,222,208,.45);border-radius:30px;
+    padding:13px 24px;font-size:13px;color:var(--mint);transition:.25s;
+    background:rgba(163,222,208,.05);
   }
-  .coupon:hover{transform:scale(1.05);background:rgba(255,255,255,.24)}
-  .coupon span{font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;opacity:.9;display:block;margin-bottom:6px}
-  .coupon b{font-family:var(--display);font-weight:800;font-size:2rem;letter-spacing:4px}
-  .coupon small{display:block;font-size:.72rem;opacity:.85;margin-top:8px}
+  .coupon:hover{background:rgba(163,222,208,.12)}
+  .coupon b{font-weight:600;letter-spacing:2px}
+  .coupon span{color:var(--muted);font-size:12px}
 
-  /* ===== BENEFICIOS ===== */
-  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-  .feat{
-    background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;
-    box-shadow:var(--shadow);transition:.25s;
+  /* ============ CATÁLOGO ============ */
+  .catalog{padding:56px 38px 64px}
+  .cat-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:34px;flex-wrap:wrap}
+  .cat-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .cat-head h2{font-size:clamp(30px,3.6vw,44px);font-weight:300;letter-spacing:-.8px;color:var(--mint)}
+  .cat-head p{color:var(--muted);font-size:13.5px;max-width:320px;line-height:1.7}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+  .chip{
+    background:transparent;border:1px solid var(--line);color:var(--muted);
+    font-family:var(--font);font-size:12.5px;font-weight:400;letter-spacing:.4px;
+    padding:9px 19px;border-radius:30px;cursor:pointer;transition:.25s;
   }
-  .feat:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-  .feat .ico{
-    width:54px;height:54px;border-radius:17px;background:var(--grad-soft);
-    display:grid;place-items:center;font-size:1.5rem;margin-bottom:18px;
+  .chip:hover{border-color:rgba(163,222,208,.5);color:var(--mint)}
+  .chip.active{background:var(--mint);border-color:var(--mint);color:#0a1210;font-weight:500}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px}
+  .card{
+    background:linear-gradient(170deg,#131e22,#0e171a);
+    border:1px solid var(--line);border-radius:20px;padding:14px;
+    transition:transform .3s ease, border-color .3s, box-shadow .3s;
+    display:flex;flex-direction:column;
   }
-  .feat h4{font-family:var(--display);font-weight:700;font-size:1.02rem;margin-bottom:8px;letter-spacing:-.2px}
-  .feat p{color:var(--muted);font-size:.88rem;line-height:1.6}
-
-  /* ===== TESTIMONIOS ===== */
-  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
-  .quote{
-    background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;
-    box-shadow:var(--shadow);transition:.25s;
+  .card:hover{
+    transform:translateY(-6px);border-color:rgba(163,222,208,.35);
+    box-shadow:0 20px 50px rgba(0,0,0,.5), 0 0 40px rgba(120,220,200,.07);
   }
-  .quote:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-  .quote .stars{margin-bottom:14px}
-  .quote p{color:var(--ink);font-size:.95rem;line-height:1.7}
-  .quote .who{display:flex;align-items:center;gap:12px;margin-top:18px}
-  .quote .who span{
-    width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
-    color:#fff;font-weight:700;font-size:.85rem;
+  .card.hidden-card{display:none}
+  .c-img{border-radius:13px;overflow:hidden;height:175px;position:relative;margin-bottom:16px}
+  .c-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .card:hover .c-img img{transform:scale(1.06)}
+  .c-brand{
+    position:absolute;top:10px;left:10px;background:rgba(10,16,18,.72);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.14);color:var(--mint);font-size:10px;
+    letter-spacing:1.5px;text-transform:uppercase;padding:5px 11px;border-radius:20px;
   }
-  .quote .who b{font-size:.9rem;display:block}
-  .quote .who small{color:var(--muted);font-size:.78rem}
-
-  /* ===== NEWSLETTER ===== */
-  .news{
-    background:var(--card);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);
-    padding:56px 6%;text-align:center;max-width:860px;margin:0 auto;position:relative;overflow:hidden;
+  .c-flag{
+    position:absolute;top:10px;right:10px;font-size:10px;letter-spacing:1px;
+    padding:5px 10px;border-radius:20px;text-transform:uppercase;
   }
-  .news::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:var(--grad)}
-  .news h3{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:-.8px}
-  .news p{color:var(--muted);margin:14px auto 30px;max-width:440px;line-height:1.7}
-  .news-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .news-form input{
-    background:var(--input-bg);border:1px solid transparent;border-radius:16px;color:var(--ink);
-    font-family:var(--body);padding:15px 22px;font-size:.95rem;outline:none;min-width:270px;transition:.2s;
+  .c-flag.hot{background:rgba(255,74,45,.15);color:#ff8a75;border:1px solid rgba(255,74,45,.4)}
+  .c-flag.new{background:rgba(163,222,208,.12);color:var(--mint);border:1px solid rgba(163,222,208,.35)}
+  .c-name{font-size:14.5px;font-weight:500;letter-spacing:-.1px;line-height:1.4;min-height:40px}
+  .c-specs{color:var(--muted);font-size:12px;line-height:1.55;margin:6px 0 4px;flex:1}
+  .c-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:10px}
+  .c-price{font-size:16px;font-weight:500;color:var(--mint)}
+  .c-price small{display:block;color:var(--muted);font-size:11px;text-decoration:line-through;font-weight:400}
+  .c-add{
+    width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);
+    background:transparent;color:var(--text);font-size:17px;cursor:pointer;
+    display:grid;place-items:center;transition:.25s;font-family:var(--font);
   }
-  .news-form input:focus{background:var(--card);border-color:var(--brand1);box-shadow:0 0 0 4px rgba(108,91,255,.15)}
-
-  /* ===== FOOTER ===== */
-  footer{background:#0d0e1a;border-top:1px solid var(--line);color:#aab0c5;padding:60px 5% 28px;margin-top:50px}
-  html[data-theme="light"] footer{background:#101223;border-top:none}
-  .foot{max-width:1260px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
-  .foot .logo b{color:#fff}
-  .foot h5{font-family:var(--display);font-weight:700;font-size:.92rem;color:#fff;margin-bottom:16px;letter-spacing:.5px}
-  .foot p,.foot a{color:#aab0c5;font-size:.88rem;line-height:2.1;text-decoration:none;display:block;transition:.2s}
-  .foot a:hover{color:#fff;padding-left:4px}
-  .copy{
-    max-width:1260px;margin:44px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);
-    color:#6c7288;font-size:.76rem;text-align:center;line-height:1.8;
+  .c-add:hover{background:var(--mint);color:#0a1210;border-color:var(--mint);transform:scale(1.08)}
+  .no-results{
+    display:none;grid-column:1/-1;text-align:center;color:var(--muted);
+    padding:50px 20px;border:1px dashed var(--line);border-radius:20px;font-size:14px;
   }
 
-  /* ===== REVEAL + TOAST ===== */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease, transform .65s ease}
+  /* ============ FOOTER ============ */
+  .foot-tile{padding:46px 38px 26px;background:var(--tile-2)}
+  .foot-top{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;
+    padding-bottom:34px;border-bottom:1px solid var(--line);
+  }
+  .foot-top p{color:var(--muted);font-size:13px;line-height:1.8;max-width:300px;margin-top:14px}
+  .foot-top h5{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mint-dim);margin-bottom:14px;font-weight:500}
+  .foot-top a{display:block;color:var(--muted);font-size:13px;line-height:2.2;transition:.2s}
+  .foot-top a:hover{color:var(--mint)}
+  .foot-bottom{
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    padding-top:22px;color:#556168;font-size:11.5px;line-height:1.7;
+  }
+
+  /* ============ REVEAL + TOAST ============ */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease, transform .8s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
   #toast{
-    position:fixed;bottom:26px;right:26px;z-index:300;background:var(--toast-bg);color:var(--toast-ink);
-    font-weight:600;font-size:.9rem;padding:15px 24px;border-radius:16px;
-    box-shadow:0 18px 44px rgba(16,18,35,.4);max-width:330px;
-    transform:translateY(120px);opacity:0;transition:.35s cubic-bezier(.2,.9,.3,1.25);pointer-events:none;
+    position:fixed;bottom:26px;left:50%;z-index:400;
+    background:rgba(16,26,29,.92);backdrop-filter:blur(12px);color:var(--mint);
+    border:1px solid rgba(163,222,208,.35);
+    font-size:13px;font-weight:400;padding:13px 26px;border-radius:30px;
+    box-shadow:0 16px 44px rgba(0,0,0,.5);white-space:nowrap;max-width:92vw;
+    overflow:hidden;text-overflow:ellipsis;letter-spacing:.3px;
+    transform:translate(-50%,90px);opacity:0;transition:.4s cubic-bezier(.2,.9,.3,1.2);pointer-events:none;
   }
-  #toast.show{transform:translateY(0);opacity:1}
+  #toast.show{transform:translate(-50%,0);opacity:1}
 
-  @media (max-width:960px){
-    nav{display:none}
-    .search{display:none}
-    .hero{grid-template-columns:1fr;padding-top:46px}
-    .collage{height:420px;order:-1}
-    .foot{grid-template-columns:1fr 1fr}
+  @media (max-width:1060px){
+    .hero-main{grid-template-columns:1fr 1fr;padding:20px 30px}
+    .hero-side{grid-column:1/-1;flex-direction:row;align-items:center;flex-wrap:wrap}
+    .bento{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .nav{padding:20px 24px}
+    .hero-main{grid-template-columns:1fr;padding:16px 24px}
+    .hero-band{grid-template-columns:1fr;text-align:center;padding:24px}
+    .band-product,.band-note{justify-content:center}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .catalog{padding:40px 22px 50px}
   }
 </style>
 </head>
 <body>
 
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
-<div class="blob blob-3"></div>
+<div class="page">
 
-<!-- ============ HEADER ============ -->
-<header>
-  <a class="logo" href="#">
-    <span class="mark">⚡</span>
-    <b>Garaje<span>Tech</span></b>
-  </a>
-  <nav>
-    <a href="#catalogo">Catálogo</a>
-    <a href="#promo">Ofertas</a>
-    <a href="#beneficios">Beneficios</a>
-    <a href="#opiniones">Opiniones</a>
-  </nav>
-  <label class="search">🔍 <input type="text" id="searchInput" placeholder="Buscar teclados, hubs, cables..."></label>
-  <button class="theme-btn" id="themeBtn" title="Cambiar tema">☀️</button>
-  <button class="cart-btn" id="cartBtn">🛍️ Carrito <span class="cart-count" id="cartCount">0</span></button>
-</header>
-
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div>
-    <div class="pill">✨ <b>Nueva colección 2026</b> · Epomaker, Orico & Ugreen</div>
-    <h1>Gadgets premium para un <span class="grad">setup sin límites</span></h1>
-    <p>Teclados mecánicos <b>Epomaker</b>, almacenamiento <b>Orico</b>, carga rápida <b>Ugreen</b> y los periféricos mejor valorados — con <b>envío express</b> y garantía de 12 meses.</p>
-    <div class="hero-cta">
-      <a class="btn btn-grad" href="#catalogo">Explorar catálogo →</a>
-      <a class="btn btn-white" href="#promo">Ver ofertas 🔥</a>
-    </div>
-    <div class="social-proof">
-      <div class="avatars">
-        <span style="background:#6c5bff">JD</span><span style="background:#ff4b9b">MC</span>
-        <span style="background:#12b76a">AL</span><span style="background:#ffb01f">SR</span>
+  <!-- ============ HERO ============ -->
+  <section class="tile hero">
+    <nav class="nav">
+      <a class="logo" href="#"><i>✻</i> Garaje Tech</a>
+      <div class="nav-links">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#catalogo">Más vendidos</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#soporte">Soporte</a>
       </div>
-      <small><b>4.9/5</b> ★★★★★<br>+3.000 clientes felices en Colombia</small>
+      <div class="nav-right">
+        <button class="bag" id="bagBtn" title="Tu bolsa">🛍<span class="bag-count" id="bagCount">0</span></button>
+        <div class="burger"><span></span><span></span></div>
+      </div>
+    </nav>
+
+    <div class="hero-main">
+      <div class="hero-copy reveal visible">
+        <div class="chip-tag"><i>◍</i> Periféricos de vanguardia</div>
+        <h1>Rendimiento<br><b>sin esfuerzo</b></h1>
+        <button class="btn-pill" onclick="document.getElementById('catalogo').scrollIntoView()">
+          Explorar catálogo <span class="arr">→</span>
+        </button>
+      </div>
+
+      <div class="hero-product reveal visible">
+        <div class="glow"></div>
+        <div class="frame">
+          <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=900&q=80" alt="Teclado mecánico Epomaker TH80 Pro">
+        </div>
+        <span class="node"></span>
+      </div>
+
+      <div class="hero-side reveal visible">
+        <div class="glass-card">
+          <div class="gc-img">
+            <span class="play">▶</span>
+            <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=500&q=75" alt="Conectores reforzados Ugreen">
+          </div>
+          <p>Conectores reforzados</p>
+        </div>
+        <div class="spec-chip"><i>⌁</i> Hot-swap · Anti-ghosting</div>
+      </div>
     </div>
-  </div>
-  <div class="collage">
-    <div class="chip-float cf-1">🚚 Envío en 24h</div>
-    <div class="chip-float cf-2">🔥 Hasta -40% hoy</div>
-    <figure class="ph ph-1">
-      <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=75" alt="Teclado mecánico Epomaker">
-      <figcaption><em>Epomaker</em>Teclado TH80 Pro · $329.900</figcaption>
-    </figure>
-    <figure class="ph ph-2">
-      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=75" alt="Audífonos gamer">
-      <figcaption><em>HyperX</em>Cloud Core · $199.900</figcaption>
-    </figure>
-    <figure class="ph ph-3">
-      <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=500&q=75" alt="Mouse inalámbrico Logitech">
-    </figure>
-  </div>
-</section>
 
-<!-- ============ LOGOS ============ -->
-<div class="logos reveal">
-  <small>Distribuimos las marcas que amas</small>
-  <div class="logos-row">
-    <span>ORICO</span><span>EPOMAKER</span><span>UGREEN</span>
-    <span>LOGITECH</span><span>REDRAGON</span><span>BASEUS</span><span>HYPERX</span>
-  </div>
-</div>
+    <div class="hero-band">
+      <span class="band-node node"></span>
+      <div class="band-product">
+        <div class="bp-img">
+          <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=75" alt="Mouse Redragon">
+        </div>
+        <div class="ring360">« <b>360°</b> »</div>
+      </div>
+      <div class="band-center">
+        <h3>Explora la tecnología<br>de tu próximo setup</h3>
+        <a href="#catalogo">Descubrir ahora</a>
+      </div>
+      <div class="band-note">
+        <div class="avatar">GT</div>
+        <p>Con envíos a todo el país, llevamos <b>los mejores periféricos</b> hasta la puerta de tu casa.</p>
+      </div>
+    </div>
+  </section>
 
-<!-- ============ CATÁLOGO ============ -->
-<section id="catalogo" style="padding-top:20px">
-  <div class="wrap">
-    <div class="sec-head reveal">
+  <!-- ============ BENTO ============ -->
+  <div class="bento">
+    <section class="tile reveal">
+      <div style="padding:38px 38px 0">
+        <div class="bento-head">
+          <h2>Soluciones innovadoras<br>para tu setup</h2>
+          <div class="chip-tag"><i>◍</i> Diseños de vanguardia</div>
+        </div>
+      </div>
+      <div class="bento-product">
+        <div class="bpr">
+          <img src="https://images.unsplash.com/photo-1531492746076-161ca9bcad58?auto=format&fit=crop&w=800&q=75" alt="Almacenamiento Orico" loading="lazy">
+        </div>
+        <div class="ring360">« <b>360°</b> »</div>
+      </div>
+    </section>
+
+    <section class="tile tile-mist reveal" id="ofertas">
+      <span class="node"></span>
+      <h2>Tecnología sin esfuerzo para tu espacio</h2>
+      <p>Descubre periféricos de diseño de vanguardia que llevan tu experiencia diaria a otro nivel — hasta 40% de descuento esta semana.</p>
+      <button class="btn-pill" onclick="document.getElementById('catalogo').scrollIntoView()">
+        Ver ofertas <span class="arr">→</span>
+      </button>
+    </section>
+  </div>
+
+  <!-- ============ STRIP SOPORTE ============ -->
+  <section class="tile strip reveal" id="soporte">
+    <div class="strip-left">
+      <div class="chip-tag"><i>✻</i> Soporte 24/7 · Garantía 12 meses</div>
+      <h3>High-Tech, <span>sin complicaciones.</span></h3>
+    </div>
+    <div class="coupon" id="coupon" title="Click para copiar">
+      Cupón <b>GARAJE10</b> <span>· 10% extra — click para copiar</span>
+    </div>
+  </section>
+
+  <!-- ============ CATÁLOGO ============ -->
+  <section class="tile catalog" id="catalogo">
+    <div class="cat-head reveal">
       <div>
-        <div class="kicker">— Catálogo</div>
-        <h2>Los favoritos de la comunidad</h2>
+        <div class="cat-label">— Catálogo</div>
+        <h2>Los más vendidos</h2>
       </div>
-      <p>Productos 100% originales, seleccionados y probados por nuestro equipo antes de llegar a tus manos.</p>
+      <p>Epomaker, Orico, Ugreen y más. Productos originales, seleccionados y probados por nuestro equipo.</p>
     </div>
 
     <div class="filters reveal">
       <button class="chip active" data-filter="todos">Todos</button>
-      <button class="chip" data-filter="teclados">⌨️ Teclados</button>
-      <button class="chip" data-filter="mouse">🖱️ Mouse</button>
-      <button class="chip" data-filter="audio">🎧 Audio</button>
-      <button class="chip" data-filter="almacenamiento">💾 Almacenamiento</button>
-      <button class="chip" data-filter="energia">🔌 Carga & Cables</button>
-      <button class="chip" data-filter="gaming">🎮 Gaming</button>
+      <button class="chip" data-filter="teclados">Teclados</button>
+      <button class="chip" data-filter="mouse">Mouse</button>
+      <button class="chip" data-filter="audio">Audio</button>
+      <button class="chip" data-filter="almacenamiento">Almacenamiento</button>
+      <button class="chip" data-filter="energia">Carga</button>
+      <button class="chip" data-filter="gaming">Gaming</button>
     </div>
 
     <div class="grid" id="grid">
 
-      <article class="card reveal" data-cat="teclados" data-name="epomaker th80 pro teclado mecanico 75 rgb hot swap">
-        <div class="card-img">
-          <span class="brand-tag">Epomaker</span><span class="flag top">⭐ Best seller</span>
-          <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=700&q=75" alt="Teclado mecánico Epomaker TH80 Pro" loading="lazy">
+      <div class="card reveal" data-cat="teclados">
+        <div class="c-img">
+          <span class="c-brand">Epomaker</span><span class="c-flag hot">Top</span>
+          <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=600&q=75" alt="Epomaker TH80 Pro" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Epomaker TH80 Pro · Mecánico 75% RGB</h3>
-          <p class="card-specs">Hot-swap · Gasket mount · Tri-mode BT/2.4G/USB-C · Keycaps PBT</p>
-          <div class="stars">★★★★★ <small>4.9 (96)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$419.900</span><span class="now">$329.900</span></div>
-            <button class="add-btn" data-name="Epomaker TH80 Pro">Agregar</button>
-          </div>
+        <div class="c-name">Epomaker TH80 Pro · 75% RGB</div>
+        <p class="c-specs">Hot-swap · Gasket · Tri-mode BT/2.4G/USB-C</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$419.900</small>$329.900</div>
+          <button class="c-add" data-name="Epomaker TH80 Pro" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="teclados" data-name="epomaker kit custom 65 keycaps switches">
-        <div class="card-img">
-          <span class="brand-tag">Epomaker</span><span class="flag new">Nuevo</span>
-          <img src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a?auto=format&fit=crop&w=700&q=75" alt="Kit custom Epomaker con keycaps" loading="lazy">
+      <div class="card reveal" data-cat="teclados">
+        <div class="c-img">
+          <span class="c-brand">Epomaker</span><span class="c-flag new">Nuevo</span>
+          <img src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a?auto=format&fit=crop&w=600&q=75" alt="Kit Custom Epomaker" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Epomaker Kit Custom 65% + Keycaps PBT</h3>
-          <p class="card-specs">Barebone hot-swap · Keycaps XDA 132 teclas · Switches Flamingo</p>
-          <div class="stars">★★★★★ <small>4.8 (41)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$369.900</span><span class="now">$289.900</span></div>
-            <button class="add-btn" data-name="Kit Custom Epomaker 65%">Agregar</button>
-          </div>
+        <div class="c-name">Epomaker Kit Custom 65%</div>
+        <p class="c-specs">Barebone hot-swap · Keycaps PBT · Switches Flamingo</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$369.900</small>$289.900</div>
+          <button class="c-add" data-name="Kit Custom Epomaker 65%" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="teclados" data-name="epomaker teclado inalambrico blanco minimal 65">
-        <div class="card-img">
-          <span class="brand-tag">Epomaker</span>
-          <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=75" alt="Teclado Epomaker blanco minimal" loading="lazy">
+      <div class="card reveal" data-cat="teclados">
+        <div class="c-img">
+          <span class="c-brand">Epomaker</span>
+          <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=75" alt="Epomaker Aura 65%" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Epomaker Aura 65% Wireless White</h3>
-          <p class="card-specs">Switches lineales silenciosos · BT 5.0 · Batería 3000mAh · Mac/Win</p>
-          <div class="stars">★★★★☆ <small>4.6 (58)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$279.900</span><span class="now">$219.900</span></div>
-            <button class="add-btn" data-name="Epomaker Aura 65%">Agregar</button>
-          </div>
+        <div class="c-name">Epomaker Aura 65% White</div>
+        <p class="c-specs">Inalámbrico BT 5.0 · Switches silenciosos · Mac/Win</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$279.900</small>$219.900</div>
+          <button class="c-add" data-name="Epomaker Aura 65%" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="teclados" data-name="logitech mx keys mini teclado oficina low profile">
-        <div class="card-img">
-          <span class="brand-tag">Logitech</span>
-          <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?auto=format&fit=crop&w=700&q=75" alt="Teclado Logitech MX Keys Mini" loading="lazy">
+      <div class="card reveal" data-cat="teclados">
+        <div class="c-img">
+          <span class="c-brand">Logitech</span>
+          <img src="https://images.unsplash.com/photo-1541140532154-b024d705b90a?auto=format&fit=crop&w=600&q=75" alt="Logitech MX Keys Mini" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Logitech MX Keys Mini · Low Profile</h3>
-          <p class="card-specs">Multi-dispositivo · Retroiluminado · USB-C · Ideal productividad</p>
-          <div class="stars">★★★★★ <small>4.9 (112)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$339.900</span><span class="now">$269.900</span></div>
-            <button class="add-btn" data-name="Logitech MX Keys Mini">Agregar</button>
-          </div>
+        <div class="c-name">Logitech MX Keys Mini</div>
+        <p class="c-specs">Low profile · Multi-dispositivo · Retroiluminado</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$339.900</small>$269.900</div>
+          <button class="c-add" data-name="Logitech MX Keys Mini" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="mouse" data-name="logitech g705 mouse inalambrico gamer blanco">
-        <div class="card-img">
-          <span class="brand-tag">Logitech G</span><span class="flag top">⭐ Best seller</span>
-          <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=700&q=75" alt="Mouse Logitech G inalámbrico" loading="lazy">
+      <div class="card reveal" data-cat="mouse">
+        <div class="c-img">
+          <span class="c-brand">Logitech G</span><span class="c-flag hot">Top</span>
+          <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=600&q=75" alt="Logitech G705" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Logitech G705 Wireless · Aurora</h3>
-          <p class="card-specs">Lightspeed + BT · RGB Lightsync · 8.500 DPI · 40h batería</p>
-          <div class="stars">★★★★★ <small>4.8 (87)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$249.900</span><span class="now">$189.900</span></div>
-            <button class="add-btn" data-name="Logitech G705">Agregar</button>
-          </div>
+        <div class="c-name">Logitech G705 Wireless</div>
+        <p class="c-specs">Lightspeed + BT · RGB · 40h de batería</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$249.900</small>$189.900</div>
+          <button class="c-add" data-name="Logitech G705" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="mouse" data-name="redragon storm pro mouse gamer negro rgb">
-        <div class="card-img">
-          <span class="brand-tag">Redragon</span><span class="flag sale">-33%</span>
-          <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=700&q=75" alt="Mouse gamer Redragon Storm Pro" loading="lazy">
+      <div class="card reveal" data-cat="mouse">
+        <div class="c-img">
+          <span class="c-brand">Redragon</span><span class="c-flag hot">-33%</span>
+          <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=75" alt="Redragon Storm Pro" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Redragon Storm Pro M808 · 26K DPI</h3>
-          <p class="card-specs">Sensor PAW3395 · 7 botones · Ultraliviano 63g · Cable paracord</p>
-          <div class="stars">★★★★★ <small>4.7 (134)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$179.900</span><span class="now">$119.900</span></div>
-            <button class="add-btn" data-name="Redragon Storm Pro">Agregar</button>
-          </div>
+        <div class="c-name">Redragon Storm Pro M808</div>
+        <p class="c-specs">26.000 DPI · 63g · Cable paracord</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$179.900</small>$119.900</div>
+          <button class="c-add" data-name="Redragon Storm Pro" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="audio" data-name="hyperx cloud audifonos diadema gamer microfono">
-        <div class="card-img">
-          <span class="brand-tag">HyperX</span><span class="flag sale">-30%</span>
-          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=75" alt="Audífonos HyperX Cloud" loading="lazy">
+      <div class="card reveal" data-cat="audio">
+        <div class="c-img">
+          <span class="c-brand">HyperX</span><span class="c-flag hot">-30%</span>
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=75" alt="HyperX Cloud Core" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">HyperX Cloud Core · 7.1 Surround</h3>
-          <p class="card-specs">Drivers 53mm · Micrófono desmontable · Memory foam · PC/Consola</p>
-          <div class="stars">★★★★★ <small>4.9 (203)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$289.900</span><span class="now">$199.900</span></div>
-            <button class="add-btn" data-name="HyperX Cloud Core">Agregar</button>
-          </div>
+        <div class="c-name">HyperX Cloud Core 7.1</div>
+        <p class="c-specs">Drivers 53mm · Micrófono desmontable · PC/Consola</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$289.900</small>$199.900</div>
+          <button class="c-add" data-name="HyperX Cloud Core" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="gaming" data-name="control xbox series inalambrico blanco gamepad">
-        <div class="card-img">
-          <span class="brand-tag">Xbox</span>
-          <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=700&q=75" alt="Control inalámbrico Xbox Series" loading="lazy">
+      <div class="card reveal" data-cat="gaming">
+        <div class="c-img">
+          <span class="c-brand">Xbox</span>
+          <img src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=75" alt="Control Xbox Series" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Control Xbox Series · Robot White</h3>
-          <p class="card-specs">Inalámbrico + BT · PC/Xbox/Android · Gatillos texturizados</p>
-          <div class="stars">★★★★★ <small>4.8 (76)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$319.900</span><span class="now">$269.900</span></div>
-            <button class="add-btn" data-name="Control Xbox Series">Agregar</button>
-          </div>
+        <div class="c-name">Control Xbox Series</div>
+        <p class="c-specs">Inalámbrico + BT · PC/Xbox/Android</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$319.900</small>$269.900</div>
+          <button class="c-add" data-name="Control Xbox Series" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="almacenamiento" data-name="orico caja enclosure nvme m.2 usb-c ssd">
-        <div class="card-img">
-          <span class="brand-tag">Orico</span><span class="flag new">Nuevo</span>
-          <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=700&q=75" alt="Caja Orico para SSD NVMe" loading="lazy">
+      <div class="card reveal" data-cat="almacenamiento">
+        <div class="c-img">
+          <span class="c-brand">Orico</span><span class="c-flag new">Nuevo</span>
+          <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=600&q=75" alt="Orico Caja NVMe" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Orico Caja M.2 NVMe → USB-C 10Gbps</h3>
-          <p class="card-specs">NVMe & SATA · USB 3.2 Gen2 · Aluminio · Herramienta incluida</p>
-          <div class="stars">★★★★☆ <small>4.6 (64)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$129.900</span><span class="now">$99.900</span></div>
-            <button class="add-btn" data-name="Orico Caja M.2 NVMe">Agregar</button>
-          </div>
+        <div class="c-name">Orico Caja M.2 NVMe USB-C</div>
+        <p class="c-specs">10Gbps · NVMe & SATA · Aluminio</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$129.900</small>$99.900</div>
+          <button class="c-add" data-name="Orico Caja M.2 NVMe" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="almacenamiento" data-name="orico dock estacion discos duros hdd clonado">
-        <div class="card-img">
-          <span class="brand-tag">Orico</span>
-          <img src="https://images.unsplash.com/photo-1531492746076-161ca9bcad58?auto=format&fit=crop&w=700&q=75" alt="Dock Orico para discos duros" loading="lazy">
+      <div class="card reveal" data-cat="almacenamiento">
+        <div class="c-img">
+          <span class="c-brand">Orico</span>
+          <img src="https://images.unsplash.com/photo-1531492746076-161ca9bcad58?auto=format&fit=crop&w=600&q=75" alt="Orico Dock Dual" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Orico Dock Dual HDD/SSD + Clonado</h3>
-          <p class="card-specs">2 bahías 2.5"/3.5" · Clonado offline · USB 3.0 · Hasta 40TB</p>
-          <div class="stars">★★★★★ <small>4.8 (52)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$219.900</span><span class="now">$159.900</span></div>
-            <button class="add-btn" data-name="Orico Dock Dual">Agregar</button>
-          </div>
+        <div class="c-name">Orico Dock Dual + Clonado</div>
+        <p class="c-specs">2 bahías 2.5"/3.5" · Clonado offline · USB 3.0</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$219.900</small>$159.900</div>
+          <button class="c-add" data-name="Orico Dock Dual" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="energia" data-name="ugreen cargador gan 65w cable usb-c 100w kit">
-        <div class="card-img">
-          <span class="brand-tag">Ugreen</span><span class="flag top">⭐ Best seller</span>
-          <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=700&q=75" alt="Cargador Ugreen GaN con cable" loading="lazy">
+      <div class="card reveal" data-cat="energia">
+        <div class="c-img">
+          <span class="c-brand">Ugreen</span><span class="c-flag hot">Top</span>
+          <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=600&q=75" alt="Ugreen Kit GaN" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Ugreen Kit GaN 65W + Cable USB-C 100W</h3>
-          <p class="card-specs">3 puertos PD · Carga laptop/celular · Cable nylon 2m E-Marker</p>
-          <div class="stars">★★★★★ <small>4.9 (148)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$169.900</span><span class="now">$129.900</span></div>
-            <button class="add-btn" data-name="Ugreen Kit GaN 65W">Agregar</button>
-          </div>
+        <div class="c-name">Ugreen Kit GaN 65W</div>
+        <p class="c-specs">3 puertos PD · Cable USB-C 100W incluido</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$169.900</small>$129.900</div>
+          <button class="c-add" data-name="Ugreen Kit GaN 65W" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
-      <article class="card reveal" data-cat="energia" data-name="baseus power bank bateria portatil 20000 65w">
-        <div class="card-img">
-          <span class="brand-tag">Baseus</span><span class="flag sale">-25%</span>
-          <img src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=700&q=75" alt="Power bank Baseus 20000mAh" loading="lazy">
+      <div class="card reveal" data-cat="energia">
+        <div class="c-img">
+          <span class="c-brand">Baseus</span><span class="c-flag hot">-25%</span>
+          <img src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?auto=format&fit=crop&w=600&q=75" alt="Baseus Power Bank" loading="lazy">
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Baseus Power Bank 20.000mAh 65W</h3>
-          <p class="card-specs">Carga laptops · Pantalla digital · USB-C PD + 2 USB-A</p>
-          <div class="stars">★★★★☆ <small>4.5 (93)</small></div>
-          <div class="card-foot">
-            <div class="price"><span class="old">$239.900</span><span class="now">$179.900</span></div>
-            <button class="add-btn" data-name="Baseus Power Bank 20K">Agregar</button>
-          </div>
+        <div class="c-name">Baseus Power Bank 20.000mAh</div>
+        <p class="c-specs">65W · Carga laptops · Pantalla digital</p>
+        <div class="c-foot">
+          <div class="c-price"><small>$239.900</small>$179.900</div>
+          <button class="c-add" data-name="Baseus Power Bank 20K" title="Agregar">+</button>
         </div>
-      </article>
+      </div>
 
+      <div class="no-results" id="noResults">No hay productos en esta categoría.</div>
     </div>
-    <div class="no-results" id="noResults">🔎 No encontramos productos con esa búsqueda. Prueba con otra palabra.</div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ PROMO ============ -->
-<section id="promo">
-  <div class="wrap">
-    <div class="promo reveal">
+  <!-- ============ FOOTER ============ -->
+  <footer class="tile foot-tile">
+    <div class="foot-top">
       <div>
-        <h3>Semana Tech 🔥<br>hasta 40% de descuento</h3>
-        <p>Solo esta semana en teclados Epomaker, kits Ugreen y almacenamiento Orico. Además, usa tu cupón de bienvenida y ahorra un 10% extra.</p>
+        <a class="logo" href="#"><i>✻</i> Garaje Tech</a>
+        <p>Periféricos y gadgets de vanguardia — Epomaker, Orico, Ugreen y más — con envío express, garantía real y soporte 24/7.</p>
       </div>
-      <div class="coupon" id="coupon" title="Click para copiar">
-        <span>Cupón de bienvenida</span>
-        <b>GARAJE10</b>
-        <small>👆 click para copiar · 10% extra en tu primera compra</small>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BENEFICIOS ============ -->
-<section id="beneficios" style="padding-top:30px">
-  <div class="wrap">
-    <div class="sec-head reveal">
       <div>
-        <div class="kicker">— Beneficios</div>
-        <h2>Comprar aquí es fácil</h2>
+        <h5>Tienda</h5>
+        <a href="#catalogo">Teclados</a>
+        <a href="#catalogo">Mouse</a>
+        <a href="#catalogo">Almacenamiento</a>
+        <a href="#catalogo">Carga & cables</a>
       </div>
-    </div>
-    <div class="feats">
-      <div class="feat reveal"><div class="ico">🚚</div><h4>Envío express 24/48h</h4><p>Despacho el mismo día en pedidos antes de las 3pm. Gratis desde $150.000.</p></div>
-      <div class="feat reveal"><div class="ico">🛡️</div><h4>Garantía 12 meses</h4><p>Productos originales con garantía directa. Si falla, lo cambiamos sin drama.</p></div>
-      <div class="feat reveal"><div class="ico">💳</div><h4>Paga a tu manera</h4><p>Tarjetas, PSE, Nequi, Daviplata o contraentrega. Siempre con factura.</p></div>
-      <div class="feat reveal"><div class="ico">💬</div><h4>Asesoría real</h4><p>¿Dudas entre dos teclados? Te asesoramos gratis por WhatsApp.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ OPINIONES ============ -->
-<section id="opiniones" style="padding-top:30px">
-  <div class="wrap">
-    <div class="sec-head reveal">
       <div>
-        <div class="kicker">— Opiniones</div>
-        <h2>Lo que dice la comunidad</h2>
+        <h5>Ayuda</h5>
+        <a href="#soporte">Soporte 24/7</a>
+        <a href="#">Envíos y devoluciones</a>
+        <a href="#">Garantías</a>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <a href="#">WhatsApp</a>
+        <a href="#">Instagram</a>
+        <a href="#">hola@garajetech.co</a>
       </div>
     </div>
-    <div class="quotes">
-      <div class="quote reveal">
-        <div class="stars">★★★★★</div>
-        <p>"El TH80 Pro llegó al día siguiente y perfectamente empacado. El teclado es una locura, suena y se siente premium. 100% recomendados."</p>
-        <div class="who"><span style="background:#6c5bff">JD</span><div><b>Juan David R.</b><small>Bogotá · Compra verificada</small></div></div>
-      </div>
-      <div class="quote reveal">
-        <div class="stars">★★★★★</div>
-        <p>"Compré la caja Orico para mi SSD viejo y ahora lo uso como disco portátil ultra rápido. Me asesoraron por WhatsApp antes de comprar."</p>
-        <div class="who"><span style="background:#ff4b9b">MC</span><div><b>María Camila T.</b><small>Medellín · Compra verificada</small></div></div>
-      </div>
-      <div class="quote reveal">
-        <div class="stars">★★★★★</div>
-        <p>"El kit Ugreen carga mi portátil y el celular al tiempo. Calidad excelente y el cupón de bienvenida funcionó de una. Volveré a comprar."</p>
-        <div class="who"><span style="background:#12b76a">AL</span><div><b>Andrés L.</b><small>Cali · Compra verificada</small></div></div>
-      </div>
+    <div class="foot-bottom">
+      <span>© 2026 Garaje Tech. Todos los derechos reservados.</span>
+      <span>Sitio de demostración — marcas mostradas como ejemplo, fotos ilustrativas (Unsplash).</span>
     </div>
-  </div>
-</section>
+  </footer>
 
-<!-- ============ NEWSLETTER ============ -->
-<section id="club" style="padding-top:30px">
-  <div class="news reveal">
-    <div class="kicker">— Newsletter</div>
-    <h3>Ofertas exclusivas, cero spam</h3>
-    <p>Únete y recibe drops de teclados custom, descuentos relámpago y cupones solo para suscriptores.</p>
-    <form class="news-form" id="newsForm">
-      <input type="email" placeholder="tucorreo@email.com" required>
-      <button class="btn btn-grad" type="submit">Suscribirme</button>
-    </form>
-  </div>
-</section>
+</div>
 
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="foot">
-    <div>
-      <a class="logo" href="#" style="margin-bottom:16px"><span class="mark">⚡</span><b style="color:#fff">Garaje<span>Tech</span></b></a>
-      <p>Gadgets y periféricos premium de las marcas que amas: Epomaker, Orico, Ugreen y más. Tecnología original, envío express y atención de verdad.</p>
-    </div>
-    <div>
-      <h5>Tienda</h5>
-      <a href="#catalogo">Teclados mecánicos</a>
-      <a href="#catalogo">Mouse & periféricos</a>
-      <a href="#catalogo">Almacenamiento</a>
-      <a href="#catalogo">Carga & cables</a>
-    </div>
-    <div>
-      <h5>Ayuda</h5>
-      <a href="#beneficios">Envíos y garantía</a>
-      <a href="#promo">Ofertas</a>
-      <a href="#">Preguntas frecuentes</a>
-      <a href="#">Términos y condiciones</a>
-    </div>
-    <div>
-      <h5>Contacto</h5>
-      <a href="#">📱 WhatsApp</a>
-      <a href="#">📸 Instagram</a>
-      <a href="#">✉️ hola@garajetech.co</a>
-      <a href="#">📍 Bogotá, Colombia</a>
-    </div>
-  </div>
-  <div class="copy">
-    © 2026 Garaje Tech · Sitio de demostración — las marcas (Orico, Epomaker, Ugreen y otras) se muestran solo como ejemplo y las fotos son ilustrativas (Unsplash).
-  </div>
-</footer>
-
-<div id="toast">✅ Producto agregado al carrito</div>
+<div id="toast">Agregado a tu bolsa</div>
 
 <script>
-  // ===== Tema oscuro / claro =====
-  const themeBtn = document.getElementById('themeBtn');
-  function setTheme(t) {
-    document.documentElement.dataset.theme = t;
-    themeBtn.textContent = t === 'dark' ? '☀️' : '🌙';
-    themeBtn.title = t === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro';
-    try { localStorage.setItem('gt-theme', t); } catch {}
-  }
-  let savedTheme = 'dark';
-  try { savedTheme = localStorage.getItem('gt-theme') || 'dark'; } catch {}
-  setTheme(savedTheme);
-  themeBtn.addEventListener('click', () =>
-    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
-
   // ===== Reveal on scroll =====
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // ===== Filtros + búsqueda combinados =====
-  const chips = document.querySelectorAll('.chip');
-  const cards = document.querySelectorAll('.card');
-  const searchInput = document.getElementById('searchInput');
-  const noResults = document.getElementById('noResults');
-  let activeFilter = 'todos';
-
-  function applyFilters() {
-    const q = searchInput.value.trim().toLowerCase();
-    let visible = 0;
-    cards.forEach(card => {
-      const matchCat = activeFilter === 'todos' || card.dataset.cat === activeFilter;
-      const matchText = !q || card.dataset.name.includes(q);
-      const show = matchCat && matchText;
-      card.classList.toggle('hidden-card', !show);
-      if (show) { card.classList.add('visible'); visible++; }
-    });
-    noResults.style.display = visible === 0 ? 'block' : 'none';
-  }
-  chips.forEach(chip => chip.addEventListener('click', () => {
-    chips.forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    activeFilter = chip.dataset.filter;
-    applyFilters();
-  }));
-  searchInput.addEventListener('input', applyFilters);
-
-  // ===== Carrito + toast =====
-  let cart = 0;
-  const cartCount = document.getElementById('cartCount');
+  // ===== Bolsa + toast =====
+  let bag = 0;
+  const bagCount = document.getElementById('bagCount');
   const toast = document.getElementById('toast');
   let toastTimer;
   function showToast(msg) {
     toast.textContent = msg;
     toast.classList.add('show');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 2300);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
   }
-  document.querySelectorAll('.add-btn').forEach(btn => btn.addEventListener('click', () => {
-    cart++;
-    cartCount.textContent = cart;
-    cartCount.classList.remove('bump');
-    void cartCount.offsetWidth;
-    cartCount.classList.add('bump');
-    showToast('🛍️ ' + btn.dataset.name + ' agregado al carrito');
+  document.querySelectorAll('.c-add').forEach(btn => btn.addEventListener('click', () => {
+    bag++;
+    bagCount.textContent = bag;
+    bagCount.classList.remove('bump');
+    void bagCount.offsetWidth;
+    bagCount.classList.add('bump');
+    showToast('✓ ' + btn.dataset.name + ' agregado a tu bolsa');
   }));
-  document.getElementById('cartBtn').addEventListener('click', () =>
-    showToast(cart > 0 ? '🛍️ Tienes ' + cart + ' producto(s) en tu carrito' : '🛍️ Tu carrito está vacío'));
+  document.getElementById('bagBtn').addEventListener('click', () =>
+    showToast(bag > 0 ? 'Tienes ' + bag + ' producto(s) en tu bolsa' : 'Tu bolsa está vacía'));
+
+  // ===== Filtros =====
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.card');
+  const noResults = document.getElementById('noResults');
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.filter;
+    let visible = 0;
+    cards.forEach(card => {
+      const show = f === 'todos' || card.dataset.cat === f;
+      card.classList.toggle('hidden-card', !show);
+      if (show) { card.classList.add('visible'); visible++; }
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }));
 
   // ===== Cupón: click para copiar =====
   document.getElementById('coupon').addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText('GARAJE10'); showToast('🏷️ Cupón GARAJE10 copiado'); }
-    catch { showToast('🏷️ Usa el cupón: GARAJE10'); }
-  });
-
-  // ===== Newsletter =====
-  document.getElementById('newsForm').addEventListener('submit', e => {
-    e.preventDefault();
-    showToast('🎉 ¡Bienvenido! Revisa tu correo');
-    e.target.reset();
+    try { await navigator.clipboard.writeText('GARAJE10'); showToast('Cupón GARAJE10 copiado'); }
+    catch { showToast('Usa el cupón: GARAJE10'); }
   });
 
   // ===== Fallback si una foto no carga =====
   const fallback = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="700" height="440"><rect width="700" height="440" fill="#1a1c2e"/><text x="350" y="210" text-anchor="middle" fill="#8b7bff" font-family="sans-serif" font-size="38" font-weight="bold">Garaje Tech</text><text x="350" y="250" text-anchor="middle" fill="#9aa2bf" font-family="sans-serif" font-size="17">Foto no disponible</text></svg>');
+    '<svg xmlns="http://www.w3.org/2000/svg" width="700" height="440"><rect width="700" height="440" fill="#101a1d"/><text x="350" y="215" text-anchor="middle" fill="#8fb0a7" font-family="sans-serif" font-size="24">Garaje Tech</text><text x="350" y="248" text-anchor="middle" fill="#556168" font-family="sans-serif" font-size="14">Imagen no disponible</text></svg>');
   document.querySelectorAll('img').forEach(img => img.addEventListener('error', () => { img.src = fallback; }, { once: true }));
 </script>
 </body>
